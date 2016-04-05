@@ -1,0 +1,241 @@
+<mvc:View
+        controllerName="sap.ui.demo.masterdetail.controller.Detail"
+        xmlns="sap.m"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns:semantic="sap.m.semantic"
+        xmlns:f="sap.ui.layout.form"
+        xmlns:core="sap.ui.core"
+        xmlns:suite="sap.suite.ui.commons"
+        xmlns:footerbar="sap.ushell.ui.footerbar">
+
+    <semantic:DetailPage
+            id="page"
+            navButtonPress="onNavBack"
+            showNavButton="{device>/system/phone}"
+            title="{i18n>detailTitle}"
+            busy="{detailView>/busy}"
+            busyIndicatorDelay="{detailView>/delay}">
+
+        <semantic:content>
+            <ObjectHeader
+                    id="objectHeader"
+                    title="{Name}"
+                    number="{
+								path: 'UnitNumber',
+								formatter: '.formatter.currencyValue'
+					}"
+                    numberUnit="{UnitOfMeasure}">
+                <statuses>
+                    <ObjectStatus
+                            text="{Status}"
+                            state="{
+									    path: 'Status',
+									    formatter: '.formatter.status'
+									}"/>
+                    <ObjectStatus
+                            text="{Priority}"
+                            state="{
+									    path: 'Priority',
+									    formatter: '.formatter.priority'
+									}"/>
+                </statuses>
+                <attributes>
+                    <ObjectAttribute text="{Customer}"/>
+                    <ObjectAttribute text="{
+					path: 'DueAt',
+					formatter: '.formatter.date'
+				}"/>
+                </attributes>
+            </ObjectHeader>
+            <IconTabBar
+                    id="iconTabBar"
+                    class="sapUiResponsiveContentPadding">
+                <items>
+                    <IconTabFilter
+                            id="iconTabBarFilter1"
+                            icon="sap-icon://hint"
+                            tooltip="{i18n>detailIconTabBarInfo}">
+                        <f:SimpleForm id="generalInformationForm" class="sapUiForceWidthAuto sapUiResponsiveMargin"
+                                      minWidth="1024" maxContainerCols="2" editable="true"
+                                      layout="ResponsiveGridLayout"
+                                      labelSpanL="4" labelSpanM="4"
+                                      emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+                            <f:content>
+                                <core:Title text="General"/>
+                                <Label id="idLabelSubject" text="Subject"/>
+                                <Text id="idTSubject" text="{Name}"/>
+                                <Label id="idLStatus" text="Status"/>
+                                <Text id="idTStatus" text="{Status}"/>
+                                <Label id="idLPriority" text="Priority"/>
+                                <Text id="idTPriority" text="{Priority}"/>
+                                <Label id="idLAssignedTo" text="Assigned To"/>
+                                <Text id="idTAssignedTo" text="Kate Jacob"/>
+                                <Label id="idLDueAt" text="Due At"/>
+                                <Text id="idTDueAt" text="{  path: 'DueAt',
+                                                       formatter: '.formatter.date' }"/>
+
+                                <core:Title text="Customer"/>
+                                <Label id="idLabel" text="Email"/>
+                                <Text id="idText" text="customer@test.com"/>
+                                <Label id="idLabelMobile" text="Mobile"/>
+                                <Text id="idTextMobile" text="+1 (210) 941-2973"/>
+                                <Label id="idLabelJobTitle" text="Job Title"/>
+                                <Text id="idTextJobTitle" text="Mr."/>
+                                <Label id="idLabelGender" text="Gender"/>
+                                <Text id="idTextGender" text="Male"/>
+                                <Label id="idLabelPhone" text="Phone"/>
+                                <Text id="idTextPhone" text="+86 1811234523456"/>
+                                <Label id="idLabelDepartment" text="Department"/>
+                                <Text id="idTextDepartment" text="Purchasing Dept"/>
+                                <Label id="idLabelLanguage" text="Language"/>
+                                <Text id="idTextLanguage" text="English"/>
+
+                                <core:Title text="Product"/>
+                                <Label id="idLabelProductID" text="Product"/>
+                                <Text id="idTextProduct" text="MCF-0001"/>
+                                <Label id="idLabelProductSerialID" text="Serial ID"/>
+                                <Text id="idTextProductSerialID" text="XCA-0023-ER34-WETR"/>
+                                <Label id="idLabelProductCategory" text="Product Category"/>
+                                <Text id="idTextProductCategory" text="Material"/>
+                                <Label id="idLabelProductReferenceDate" text="Reference Date"/>
+                                <Text id="idTextProductReferenceDate" text="Mar 12th 2016"/>
+
+                            </f:content>
+                        </f:SimpleForm>
+                    </IconTabFilter>
+                    <IconTabFilter
+                            id="iconTabBarFilter2"
+                            icon="sap-icon://attachment"
+                            tooltip="{i18n>detailIconTabBarAttachments}">
+                        <f:SimpleForm editable="false" title="Customer Email"
+                                      class="sapUiForceWidthAuto sapUiResponsiveMargin"
+                                      maxContainerCols="1"
+                                      layout="ResponsiveGridLayout"
+                                      labelSpanL="1"
+                                      labelSpanM="1"
+                                      emptySpanL="1"
+                                      emptySpanM="1"
+                                      columnsL="1"
+                                      columnsM="1">
+                            <f:content>
+                                <Label id="idLCustEmailFrom" text="From"/>
+                                <Text id="idTCustEmailFrom" text="Li, Lei"/>
+                                <Label id="idLCustEmailTo" text="To"/>
+                                <Text id="idTCustEmailTo" text="Han, Meimei"/>
+                                <Label id="idLCustEmailSubject" text="Subject"/>
+                                <Text id="idTCustEmailSubject" text="product issue occured"/>
+                                <Label id="idLCustEmailContent"/>
+                                <TextArea value="this is the test Cutomer Email
+                           skdlkas;lgk;lsdklglsad;lgs'
+                           sdgfasgdg
+                           sagsdgkjjlkaslkg;sadg;ksad;lg"
+                                          width="100%"
+                                          rows="8"
+                                          wrapping="Soft"
+                                          editable="false"/>
+                            </f:content>
+                        </f:SimpleForm>
+                        <f:SimpleForm editable="false" title="Attachment List"
+                                      class="sapUiForceWidthAuto sapUiResponsiveMargin"
+                                      maxContainerCols="1"
+                                      layout="ResponsiveGridLayout"
+                                      labelSpanL="1"
+                                      labelSpanM="1"
+                                      emptySpanL="1"
+                                      emptySpanM="1"
+                                      columnsL="1"
+                                      columnsM="1">
+                            <f:content>
+                                <Table>
+                                    <columns>
+                                        <Column>
+                                            <Text text="Name"/>
+                                        </Column>
+                                        <Column>
+                                            <Text text="Type"/>
+                                        </Column>
+                                        <Column>
+                                            <Text text="Description"/>
+                                        </Column>
+                                    </columns>
+                                </Table>
+                            </f:content>
+                        </f:SimpleForm>
+                    </IconTabFilter>
+                    <IconTabFilter id="iconTabBarFilter3"
+                                   icon="sap-icon://history"
+                                   tooltip="History">
+                        <Panel>
+                            <suite:Timeline
+                                    id="idTimeline"
+                                    enableSocial="true"
+                                    enableScroll="false"
+                                    width="100%"
+                                    sortOldestFirst="true">
+                                <suite:content>
+                                    <suite:TimelineItem
+                                            dateTime  = "Date(1407049200000)"
+                                            userNameClickable = "true"
+                                            text = "ample text for a Note type item"
+                                            userName = "John Smith"
+                                            title = "added a note"
+                                            filterValue = "Note"
+                                            icon = "sap-icon://notes"
+                                            userNameClicked ="attachUserNameClicked">
+                                    </suite:TimelineItem>
+                                    <suite:TimelineItem
+                                            dateTime = "new Date(1406962800000)"
+                                            userNameClickable = "true"
+                                            text = "A Call was made on this date. Need to follow up next week."
+                                            userName = "Tom Lee"
+                                            title = "made a call"
+                                            filterValue = "Call"
+                                            icon = "sap-icon://outgoing-call"
+                                            userNameClicked ="attachUserNameClicked">
+                                    </suite:TimelineItem>
+                                    <suite:TimelineItem
+                                            dateTime = "Date(1407222000000)"
+                                            userNameClickable = "true"
+                                            text = "Called customer to follow up with the order."
+                                            userName = "Jerry Lewis"
+                                            title = "made a call"
+                                            filterValue = "Call"
+                                            icon = "sap-icon://outgoing-call"
+                                            userNameClicked ="attachUserNameClicked1">
+                                    </suite:TimelineItem>
+                                </suite:content>
+                            </suite:Timeline>
+                        </Panel>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+
+        </semantic:content>
+
+        <semantic:customFooterContent>
+            <Button text="Set As Irrelevant" press="onPress"/>
+            <Button text="Assign To" press="onPress"/>
+            <Button text="Escalate" press="onPress"/>
+            <Button text="Copy" press="onPress"/>
+            <Button text="Summary" press="onPress"/>
+            <Button text="Finish Work" press="onPress"/>
+        </semantic:customFooterContent>
+        <semantic:forwardAction>
+            <semantic:ForwardAction press="onSemanticButtonPress"/>
+        </semantic:forwardAction>
+        <semantic:flagAction>
+            <semantic:FlagAction press="onSemanticButtonPress"/>
+        </semantic:flagAction>
+        <semantic:favoriteAction>
+            <semantic:FavoriteAction press="onSemanticButtonPress"/>
+        </semantic:favoriteAction>
+        <semantic:sendEmailAction>
+            <semantic:SendEmailAction
+                    id="shareEmail"
+                    press="onShareEmailPress"/>
+        </semantic:sendEmailAction>
+
+
+    </semantic:DetailPage>
+
+</mvc:View>
